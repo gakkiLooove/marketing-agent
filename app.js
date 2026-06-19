@@ -190,8 +190,8 @@ function generatePlan(inputs) {
         text: `针对未转化人群发送客户证据、常见异议回答和限时咨询名额。`,
       },
     ],
-    personas: buildPersonas(inputs,),
-    adCopy: buildAdcopy(inputs, tone, channel),
+    personas: buildPersonas(inputs),
+    adCopy: buildAdCopy(inputs, tone, channel),
     emailCopy: buildEmailCopy(inputs, tone),
     calendar: buildCalendar(inputs, channel, tone, budget),
     summary: buildSummary(inputs, goal, channel, tone, budget),
@@ -199,7 +199,7 @@ function generatePlan(inputs) {
 }
 
 function buildPrimaryMessage(inputs) {
-  const value = inputs.valueProp.replace(/[。.!！]/, "");
+  const value = inputs.valueProp.replace(/[。.!！]$/, "");
   if (value.length <= 36) return value;
   return `${value.slice(0, 34)}...`;
 }
